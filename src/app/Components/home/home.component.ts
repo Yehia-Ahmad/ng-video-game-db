@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ApiService } from 'src/app/Services/api.service';
 import { APIResponse, Game } from 'src/app/models';
@@ -10,7 +10,7 @@ import { APIResponse, Game } from 'src/app/models';
 })
 export class HomeComponent {
   public sort: string | undefined;
-  public games: Array<Game> | undefined;
+  public games: Array<Game>;
 
   constructor(
     private api: ApiService,
@@ -22,6 +22,10 @@ export class HomeComponent {
     //Add 'implements OnInit' to the class.
     this.activatedRoute.params.subscribe((params: Params) => {
       if (params['game-search']) {
+        this.searchGames('metacrit', params['game-search']);
+      } else {
+        this.searchGames('metacrit');
+        // this.searchGames('rating');
       }
     });
   }
