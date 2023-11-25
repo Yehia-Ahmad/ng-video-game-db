@@ -14,14 +14,14 @@ export class ApiService {
     ordering: string,
     search?: string
   ): Observable<APIResponse<Game>> {
-    console.log('ordering: ' + ordering);
+    // console.log('ordering: ' + ordering);
     const params = new HttpParams().set('ordering', ordering);
-    console.log('params without search: ' + params);
+    // console.log('params without search: ' + params);
     if (search) {
       const params = new HttpParams()
         .set('ordering', ordering)
         .set('search', search);
-      console.log('params with search: ' + params);
+      // console.log('params with search: ' + params);
     }
 
     return this.http.get<APIResponse<Game>>(`${env.BASE_URL}/games`, {
