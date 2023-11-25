@@ -20,9 +20,10 @@ import { HomeComponent } from './Components/home/home.component';
 import { HttpErrorsInterceptor } from './interceptors/http-errors.interceptor';
 import { HttpHeadersInterceptor } from './interceptors/http-headers.interceptor';
 import { DetailsComponent } from './Components/details/details.component';
+import { GameTabsComponent } from './Components/game-tabs/game-tabs.component';
 
 @NgModule({
-  declarations: [AppComponent, SearchBarComponent, HomeComponent, DetailsComponent],
+  declarations: [AppComponent, SearchBarComponent, HomeComponent, DetailsComponent, GameTabsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
