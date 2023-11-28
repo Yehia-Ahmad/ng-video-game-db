@@ -11,7 +11,7 @@ const routes: Routes = [
   },
   {
     path: 'search/:game-search',
-    component: SearchBarComponent,
+    component: HomeComponent,
   },
   {
     path: 'details/:id',

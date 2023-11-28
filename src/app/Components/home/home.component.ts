@@ -27,8 +27,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     //Add 'implements OnInit' to the class.
     this.routeSub = this.activatedRoute.params.subscribe((params: Params) => {
       if (params['game-search']) {
+        console.log(params);
         this.searchGames('metacrit', params['game-search']);
       } else {
+        console.log(params);
         this.searchGames('metacrit');
         // this.searchGames('rating');
       }

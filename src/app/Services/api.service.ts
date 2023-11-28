@@ -37,11 +37,19 @@ export class ApiService {
     // const gameTrailersRequest = this.http.get(
     //   `${env.BASE_URL}/games/${id}/movies`
     // );
+    const gameTrailersRequest = this.http.get(
+      'https://api.themoviedb.org/3/account/null/lists?page=1',
+      {
+        headers: {
+          accept: 'application/json',
+        },
+      }
+    );
 
     return forkJoin({
       gameInfoRequest,
       // gameScreenshotsRequest,
-      // gameTrailersRequest,
+      gameTrailersRequest,
     }).pipe(
       map((resp: any) => {
         return {
