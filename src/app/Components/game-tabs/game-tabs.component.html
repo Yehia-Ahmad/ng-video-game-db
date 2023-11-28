@@ -36,16 +36,14 @@
     <mat-tab label="Screenshots">
       <img
         class="game-screenshot"
-        src="../../assets/Screenshots/wallpaperflare.com_wallpaper (1).jpg"
+        *ngFor="let screenshot of Screenshots"
+        src="{{ screenshot.path }}"
         alt="screenshot"
       />
     </mat-tab>
     <mat-tab label="Trailers">
-      <video class="game-trailer" controls>
-        <source
-          src="../../assets/Trailer/Assassin Creed 2 E3 Trailer.mp4"
-          type="video/mp4"
-        />
+      <video class="game-trailer" controls *ngFor="let trailer of Trailer">
+        <source src="{{ trailer.path }}" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </mat-tab>

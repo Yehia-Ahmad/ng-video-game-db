@@ -1,6 +1,7 @@
 import { ApiService } from 'src/app/Services/api.service';
-import { Game } from 'src/app/models';
 import { Component, Input } from '@angular/core';
+import { Game } from 'src/app/models';
+import * as GameInfo from '../../../../db.json';
 
 @Component({
   selector: 'app-game-tabs',
@@ -9,18 +10,24 @@ import { Component, Input } from '@angular/core';
 })
 export class GameTabsComponent {
   @Input() game: Game;
+  Screenshots: any[];
+  Trailer: any[];
+  GameInfo: any;
 
   constructor(private api: ApiService) {}
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
-    this.getGameScreenshots();
+    this.getGameInfo();
   }
 
-  getGameScreenshots() {
-    this.api.getGameScreenshots().subscribe((data: any) => {
-      console.log(data);
-    });
+  getGameInfo() {
+    this.GameInfo = GameInfo;
+    this.Trailer = this.GameInfo.Trailer;
+    this.Screenshots = this.GameInfo.Screenshots;
+    // this.api.getGameScreenshots().subscribe((data: any) => {
+    //   console.log(data);
+    // });
   }
 }
