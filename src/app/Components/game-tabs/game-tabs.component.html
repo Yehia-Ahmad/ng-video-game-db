@@ -33,23 +33,28 @@
         </ng-container>
       </p>
     </mat-tab>
-    <mat-tab label="Screenshots" *ngIf="game.screenshots?.length">
+    <mat-tab label="Screenshots">
       <img
         class="game-screenshot"
-        *ngFor="let screenshot of game.screenshots"
-        src="{{ screenshot.image }}"
+        src="../../assets/Screenshots/wallpaperflare.com_wallpaper (1).jpg"
         alt="screenshot"
       />
     </mat-tab>
-    <mat-tab label="Trailers" *ngIf="game.trailers?.length">
-      <video
-        class="game-trailer"
-        controls
-        *ngFor="let trailer of game.trailers"
-      >
-        <source src="{{ trailer.data?.max }}" type="video/mp4" />
+    <mat-tab label="Trailers">
+      <video class="game-trailer" controls>
+        <source
+          src="../../assets/Trailer/Assassin Creed 2 E3 Trailer.mp4"
+          type="video/mp4"
+        />
         Your browser does not support the video tag.
       </video>
     </mat-tab>
   </mat-tab-group>
 </div>
+
+<!-- *ngIf="game.screenshots?.length" -->
+<!-- *ngFor="let screenshot of game.screenshots" -->
+
+<!-- *ngIf="game.trailers?.length" -->
+<!-- *ngFor="let trailer of game.trailers" -->
+<!-- {{ trailer.data?.max }} -->

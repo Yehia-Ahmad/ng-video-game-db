@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpBackend, HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, forkJoin, map } from 'rxjs';
 import { environment as env } from 'src/environments/environments';
@@ -8,7 +8,10 @@ import { APIResponse, Game } from '../models';
   providedIn: 'root',
 })
 export class ApiService {
-  constructor(private http: HttpClient) {}
+  private TrailerUrl = 'api/Trailer';
+  private ScreenshotsUrl = 'api/Screenshots';
+
+  constructor(private http: HttpClient, private handler: HttpBackend) {}
 
   getGameList(
     ordering: string,
@@ -37,19 +40,11 @@ export class ApiService {
     // const gameTrailersRequest = this.http.get(
     //   `${env.BASE_URL}/games/${id}/movies`
     // );
-    const gameTrailersRequest = this.http.get(
-      'https://api.themoviedb.org/3/account/null/lists?page=1',
-      {
-        headers: {
-          accept: 'application/json',
-        },
-      }
-    );
 
     return forkJoin({
       gameInfoRequest,
+      // gameTrailersRequest,
       // gameScreenshotsRequest,
-      gameTrailersRequest,
     }).pipe(
       map((resp: any) => {
         return {
@@ -59,5 +54,14 @@ export class ApiService {
         };
       })
     );
+  }
+
+  getGameTrailer() {
+    this.http = new HttpClient(this.handler);
+    return this.http.get(this.TrailerUrl);
+  }
+  getGameScreenshots() {
+    this.http = new HttpClient(this.handler);
+    return this.http.get(this.ScreenshotsUrl);
   }
 }
